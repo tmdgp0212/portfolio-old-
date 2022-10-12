@@ -60,21 +60,28 @@ const HomeWrapper = styled.section`
   z-index: 0;
 
   > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     height: 100vh;
 
     > .greeting {
-      position: absolute;
-      top: 50%;
-      left: 20%;
-      margin-top: -54px;
       cursor: default;
 
       > h2 {
-        position: relative;
         font-size: 54px;
+        line-height: 1.5;
 
         z-index: 100;
+
+        @media screen and (max-width: 1200px) {
+          font-size: 48px;
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: 36px;
+        }
 
         > .top {
           display: block;
@@ -84,15 +91,6 @@ const HomeWrapper = styled.section`
         > .btm {
           display: block;
           animation: ${fadeAni2} 2s;
-        }
-
-        > b {
-          position: absolute;
-          top: -30px;
-          right: 0px;
-          font-size: 24px;
-          font-weight: 200;
-          animation: ${fadeAni2} 3s;
         }
       }
     } //.greeting
@@ -111,6 +109,15 @@ const HomeWrapper = styled.section`
 
       z-index: 0;
 
+      @media screen and (max-width: 1200px) {
+        top: 5%;
+        left: initial;
+        right: 5%;
+        width: 180px;
+        height: 160px;
+        margin-top: 0;
+      }
+
       &::after {
         display: block;
         width: 200px;
@@ -121,6 +128,11 @@ const HomeWrapper = styled.section`
         content: "";
 
         animation: ${circleAni} 13s 1.5s ease-in-out infinite;
+
+        @media screen and (max-width: 1200px) {
+          width: 180px;
+          height: 160px;
+        }
       }
     }
 
@@ -166,7 +178,6 @@ const Home = () => {
       <div className="container">
         <div className="greeting">
           <h2>
-            <b>Frontend developer</b>
             <span className="top">끊임없이 성장하는 개발자.</span>
             <span className="btm">조승혜입니다.</span>
           </h2>

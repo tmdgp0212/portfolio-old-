@@ -23,7 +23,7 @@ const Button = styled.button`
   box-shadow: 0 0 10px #eee;
 
   animation: ${outline} 0.8s ease-out infinite;
-  transition: all 0.5s;
+  transition: all 0.3s;
 
   @media screen and (max-width: 768px) {
     font-size: 18px;

@@ -1,11 +1,18 @@
 import styled, { keyframes } from "styled-components";
 import Header from "../components/Header";
-
-import { FiUser, FiGift, FiMapPin, FiPhone } from "react-icons/fi";
-import { FaHandPeace, FaPuzzlePiece, FaRegSmileWink } from "react-icons/fa";
 import NextBtn from "../components/NextBtn";
+
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+
+import { FiUser, FiGift, FiMapPin, FiPhone } from "react-icons/fi";
+import {
+  FaHandPeace,
+  FaPuzzlePiece,
+  FaRegSmileWink,
+  FaRegGrinBeamSweat,
+  FaRegCommentDots,
+} from "react-icons/fa";
 
 const imagebouncing = keyframes`
   0%{transform: rotate(0deg);}
@@ -42,6 +49,11 @@ const Greeting = styled.div`
   display: flex;
   justify-content: center;
 
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   > .image {
     position: relative;
     margin-top: 30px;
@@ -55,6 +67,16 @@ const Greeting = styled.div`
     z-index: 100;
 
     animation: ${imagebouncing} 0.8s 1s;
+
+    @media screen and (max-width: 1200px) {
+      width: 340px;
+      height: 300px;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 280px;
+      height: 250px;
+    }
 
     &:hover {
       transform: rotate(-3deg);
@@ -70,6 +92,15 @@ const Greeting = styled.div`
       background-image: url(./assets/arrow.png);
       background-size: contain;
       content: "";
+
+      @media screen and (max-width: 1200px) {
+        width: 70px;
+        height: 30px;
+      }
+
+      @media screen and (max-width: 640px) {
+        display: none;
+      }
     }
   }
 
@@ -80,6 +111,20 @@ const Greeting = styled.div`
     align-items: flex-end;
     font-size: 48px;
     cursor: default;
+
+    @media screen and (max-width: 1200px) {
+      font-size: 36px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 28px;
+    }
+
+    @media screen and (max-width: 640px) {
+      margin-left: 10px;
+      word-break: keep-all;
+      align-items: flex-start;
+    }
 
     > span:first-child {
       animation: ${righttoleft} 1.3s ease-out;
@@ -120,6 +165,14 @@ const InfoContainer = styled.div`
   justify-content: center;
   margin: 100px 0 150px;
 
+  @media screen and (max-width: 768px) {
+    margin: 80px 0 150px;
+  }
+
+  @media screen and (max-width: 640px) {
+    flex-wrap: wrap;
+  }
+
   > .info {
     display: flex;
     flex-direction: column;
@@ -131,14 +184,40 @@ const InfoContainer = styled.div`
     border-right: 1px solid #bcaa90;
     cursor: default;
 
+    @media screen and (max-width: 768px) {
+      width: 140px;
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 640px) {
+      width: 170px;
+      height: 50px;
+      border-right: none;
+      flex-direction: row;
+    }
+
     &:nth-child(1) {
       border-left: 1px solid #bcaa90;
+
+      @media screen and (max-width: 640px) {
+        border-left: none;
+      }
     }
 
     > svg {
       position: relative;
       margin-bottom: 25px;
       font-size: 22px;
+
+      @media screen and (max-width: 768px) {
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 640px) {
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
     } //svg
   } //.info
 `;
@@ -154,62 +233,105 @@ const Experience = styled.div`
     margin-bottom: 50px;
   }
 
-  > .bar {
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #bcaa90;
-    border-radius: 5px;
-  }
-
   > .flexbox {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 20px;
-    font-family: "Pretendard-Regular";
-
-    > .exprnce {
+    @media screen and (max-width: 768px) {
       display: flex;
-      flex-direction: column;
       justify-content: center;
-      position: relative;
-      font-size: 18px;
-      text-align: center;
+      align-items: center;
+    }
 
-      &::after {
-        display: block;
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        left: 50%;
-        bottom: -29px;
-        margin-left: -7px;
-        background-color: #bcaa90;
-        border-radius: 50%;
-        content: "";
+    > .text {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px;
+      font-family: "Pretendard-Regular";
+
+      @media screen and (max-width: 768px) {
+        width: fit-content;
+        flex-direction: column;
+        order: 200;
       }
 
-      &.now {
-        font-size: 20px;
-        font-weight: 600;
-      }
+      > .exprnce {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        font-size: 18px;
+        text-align: center;
 
-      &.now::after {
-        background-color: #3f2e1c;
-        outline: 1px solid #3f2e1c;
-        outline-offset: 5px;
-        animation: ${outlinePointer} 1s infinite;
-      }
+        @media screen and (max-width: 768px) {
+          margin: 22px 0;
+          font-size: 16px;
+          text-align: left;
+        }
 
-      > .year {
-        margin-top: 10px;
-        order: 10;
-      }
+        &::after {
+          display: block;
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          left: 50%;
+          bottom: -29px;
+          margin-left: -7px;
+          background-color: #bcaa90;
+          border-radius: 50%;
+          content: "";
 
-      > .rank {
-        font-size: 16px;
-        line-height: 1.4;
+          @media screen and (max-width: 768px) {
+            left: -22px;
+            bottom: 20px;
+          }
+        }
+
+        &.now {
+          font-size: 20px;
+          font-weight: 600;
+
+          @media screen and (max-width: 1200px) {
+            font-size: 18px;
+          }
+        }
+
+        &.now::after {
+          background-color: #3f2e1c;
+          outline: 1px solid #3f2e1c;
+          outline-offset: 5px;
+          animation: ${outlinePointer} 1s infinite;
+        }
+
+        > .year {
+          margin-top: 10px;
+          order: 100;
+
+          @media screen and (max-width: 768px) {
+            order: 0;
+          }
+        }
+
+        > .rank {
+          font-size: 16px;
+          line-height: 1.4;
+
+          @media screen and (max-width: 1200px) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    > .bar {
+      display: block;
+      width: 100%;
+      height: 4px;
+      background-color: #bcaa90;
+      border-radius: 5px;
+
+      @media screen and (max-width: 768px) {
+        width: 4px;
+        height: 500px;
+        order: 100;
       }
     }
   }
@@ -229,16 +351,29 @@ const Comments = styled.div`
       margin-bottom: 15px;
       font-size: 36px;
 
+      @media screen and (max-width: 1200px) {
+        font-size: 28px;
+      }
+
       > svg {
         margin-left: 10px;
       }
     }
 
     > p {
-      margin-left: 20px;
+      padding: 0 20px;
       font-size: 22px;
       font-family: "Pretendard-Regular";
       line-height: 1.4;
+      word-break: keep-all;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 768px) {
+        font-size: 16px;
+      }
 
       &:hover {
         > strong:after {
@@ -311,46 +446,62 @@ const Profile = () => {
         <Experience>
           <h4>걸어온 길</h4>
           <div className="flexbox">
-            <div className="exprnce">
-              <span className="year">2014</span>
-              <span>경남정보대학교</span>
-              <span className="rank">미용계열 전공</span>
+            <div className="text">
+              <div className="exprnce">
+                <span className="year">2014</span>
+                <span>경남정보대학교</span>
+                <span className="rank">미용계열 전공</span>
+              </div>
+              <div className="exprnce">
+                <span className="year">2015</span>
+                <span>약손명가 근무</span>
+                <span className="rank">주임</span>
+              </div>
+              <div className="exprnce">
+                <span className="year">2018</span>
+                <span>금손에스테틱</span>
+                <span className="rank">실장</span>
+              </div>
+              <div className="exprnce">
+                <span className="year">2021</span>
+                <span>맑은얼굴의원</span>
+                <span className="rank">관리사</span>
+              </div>
+              <div className="exprnce now">
+                <span className="year">2022</span>
+                <span>이젠컴퓨터아카데미</span>
+                <span className="rank">웹퍼블리셔/프론트엔드 과정 수강</span>
+              </div>
             </div>
-            <div className="exprnce">
-              <span className="year">2015</span>
-              <span>약손명가 근무</span>
-              <span className="rank">주임</span>
-            </div>
-            <div className="exprnce">
-              <span className="year">2018</span>
-              <span>금손에스테틱</span>
-              <span className="rank">실장</span>
-            </div>
-            <div className="exprnce">
-              <span className="year">2021</span>
-              <span>맑은얼굴의원</span>
-              <span className="rank">관리사</span>
-            </div>
-            <div className="exprnce now">
-              <span className="year">2022</span>
-              <span>이젠컴퓨터아카데미</span>
-              <span className="rank">웹퍼블리셔/프론트엔드 과정 수강</span>
-            </div>
+            <span className="bar"></span>
           </div>
-          <span className="bar"></span>
         </Experience>
         <Comments>
+          <div className="cmnt">
+            <h4>
+              Intro <FaRegCommentDots />
+            </h4>
+            <p>
+              <b>제 경력이 조금 특이하죠?</b> <FaRegGrinBeamSweat /> <br />
+              제가 걸어온 인생은 사실 it나 컴퓨터와는 거리가 먼 곳이였습니다.
+              <br /> 정말 애정하던 제 직업이였지만, 직업특성상 더 먼곳을 내다볼
+              수 없어 지금의 공부를 시작했습니다.
+              <br />
+              오랫동안 잘 해오던 일을 떠나오게 된 만큼 정말 큰 결심이 있었고,{" "}
+              <br />
+              그런만큼 저는 남들보다 더 많이, 더 열심히{" "}
+              <strong>성장통을 겪을 각오</strong>가 되어있습니다.
+            </p>
+          </div>
           <div className="cmnt">
             <h4>
               Strength <FaHandPeace />
             </h4>
             <p>
-              저는 전혀 다른 분야에서 일을하다 왔기때문에 분명히 남들보다 아직
-              많이 부족하고 뒤쳐집니다. <br />
-              하지만 제가 생각하는 저의
-              <strong> 가장 큰장점은 "학습력"과 "이해력"</strong> 입니다. <br />
+              제가 생각하는 저의
+              <strong> 가장 큰장점은 "이해력"과 "꾸준함"</strong> 입니다. <br />
               저는 어떤 분야에서든 필요한 능력과 센스를 빠르게 캐치하고,
-              습득하여 그것을 가뿐히 실무에 적용시킬 수 있습니다.
+              습득하여 그것을 실무에 적용시킬 수 있습니다.
             </p>
           </div>
           <div className="cmnt">
@@ -376,10 +527,7 @@ const Profile = () => {
             <p>
               마치 게임을 하듯이 즐기며 일하겠습니다. <br />
               항상 현재에 안주하지 않고
-              <strong>
-                {" "}
-                이끌어주시는만큼 성장할 수 있도록 끊임없이 노력하겠습니다.
-              </strong>
+              <strong> 끊임없이 성장할 수 있도록 꾸준히 노력하겠습니다.</strong>
             </p>
           </div>
         </Comments>

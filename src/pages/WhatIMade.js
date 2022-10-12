@@ -15,15 +15,47 @@ const Wrapper = styled.section`
 
 const ProjectSlider = styled.div`
   > h3 {
-    margin: 50px;
+    margin: 80px 0 50px;
     font-size: 36px;
     text-align: center;
+    word-break: keep-all;
   }
 
   > ul {
     display: flex;
     justify-content: center;
+    position: relative;
     margin-bottom: 50px;
+
+    @media screen and (max-width: 640px) {
+      flex-wrap: wrap;
+    }
+
+    &.focus::after {
+      display: block;
+      position: absolute;
+      top: -20px;
+      right: 280px;
+      width: 120px;
+      height: 40px;
+      background-image: url(./assets/more.png);
+      background-size: cover;
+      transform: rotate(-10deg);
+
+      content: "";
+
+      @media screen and (max-width: 1200px) {
+        right: 60px;
+      }
+
+      @media screen and (max-width: 768px) {
+        right: 30px;
+      }
+
+      @media screen and (max-width: 640px) {
+        display: none;
+      }
+    }
 
     > li {
       margin: 0 15px;
@@ -34,6 +66,16 @@ const ProjectSlider = styled.div`
       transition: all 0.2s;
       background-color: #bcaa9090;
       cursor: pointer;
+
+      @media screen and (max-width: 768px) {
+        margin: 0 10px;
+        padding: 8px 15px;
+        font-size: 15px;
+      }
+
+      @media screen and (max-width: 640px) {
+        margin: 10px;
+      }
 
       &.on,
       &:hover {
@@ -50,19 +92,18 @@ const Projects = styled.div`
   margin-bottom: 150px;
   padding: 40px 25px;
 
-  border-radius: 20px;
-
-  > div {
-    display: none;
-    position: absolute;
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+    height: 600px;
   }
 `;
 
 const clonPJList = ["Kakao", "산돌구름", "FREEWILL"];
 
 const personalPJList = [
-  "가위바위보",
-  "투두리스트",
+  "가위,바위,보",
+  "To-do list",
+  "부산온나",
   "Diary Calendar",
   "Portfolio",
 ];
@@ -127,7 +168,7 @@ const WhatIMade = () => {
       <div className="container">
         <ProjectSlider>
           <h3>홈페이지 클론 프로젝트</h3>
-          <ul>
+          <ul className="focus">
             {clonPJList.map((it, idx) => (
               <li
                 key={idx}
@@ -170,8 +211,8 @@ const WhatIMade = () => {
               url="https://tmdgp0212.github.io/FREEWILL/"
               skill={["html", "scss", "Jquery"]}
             >
-              반응형 웹을 구현하고, 햄버거버튼(nav)을 눌렀을때 활성화
-              애니메이션을 라이브러리 없이 구현했습니다. <br />
+              반응형 웹을 구현하고, 햄버거버튼(nav)을 눌렀을때 팝업 애니메이션을
+              라이브러리 없이 구현했습니다. <br />
               또한 wow.js 라이브러리를 활용하여 스크롤 이벤트를
               적용해보았습니다.
             </Project>
@@ -214,6 +255,18 @@ const WhatIMade = () => {
               App입니다.
             </Project>
             <Project
+              name="busanonna"
+              title="부산온나 여행지 추천사이트"
+              url="https://tmdgp0212.github.io/busanonna/"
+              skill={["html", "css", "Javascrit"]}
+            >
+              부산의 여행지를 소개하는 창작 페이지입니다. <br />
+              "부산온나"는 부산 온나!(부산에 오세요의 사투리) 와 부산에 온
+              나(me)의 이중적 의미를 가집니다. <br />
+              다양한 슬라이드 이벤트와 네비게이션 바 구현에 초점을 맞추어
+              진행되었습니다.
+            </Project>
+            <Project
               name="calendar"
               title="Calendar Diary"
               url="https://tmdgp0212.github.io/Diary_Calendar/"
@@ -230,8 +283,9 @@ const WhatIMade = () => {
               url="https://tmdgp0212.github.io/portfolio/"
               skill={["react"]}
             >
-              현재 보고계신 개인 포트폴리오 페이지입니다. 반응형을 적용하였으며,
-              리액트 라우터를 활용하여 페이지를 구성하였습니다.
+              현재 보고계신 개인 포트폴리오 페이지입니다. <br />
+              반응형을 적용하였으며, 리액트 라우터를 활용하여 페이지를
+              구성하였습니다.
             </Project>
           </Projects>
         </ProjectSlider>

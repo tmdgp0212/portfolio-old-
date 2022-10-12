@@ -22,6 +22,11 @@ const Skills = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 35px;
+
+  @media screen and (max-width: 1200px) {
+    padding: 0 50px;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Comments = styled.ul`
@@ -36,13 +41,21 @@ const Comments = styled.ul`
 
     > h4 {
       font-size: 36px;
+      @media screen and (max-width: 1200px) {
+        font-size: 28px;
+      }
     }
 
     > p {
       margin-left: 20px;
       font-size: 22px;
       font-family: "Pretendard-Regular";
-      line-height: 1.4;
+      line-height: 1.5;
+      word-break: keep-all;
+
+      @media screen and (max-width: 1200px) {
+        font-size: 18px;
+      }
     }
   }
 `;
@@ -69,7 +82,7 @@ const WhatICan = () => {
           <Skill skill={"javascript"} per={83} />
           <Skill skill={"sass"} per={90} />
           <Skill skill={"jquery"} per={88} />
-          <Skill skill={"react"} per={76} />
+          <Skill skill={"react"} per={72} />
           <Skill skill={"typescript"} per={35} />
         </Skills>
         <Comments>
@@ -93,25 +106,25 @@ const WhatICan = () => {
           <li>
             <h4>03. </h4>
             <p>
-              javascript / jquery를 활용하여{" "}
-              <strong>프레임워크를 사용하지않고 다양한 기능 구현</strong>이
-              가능합니다. <br />
-              <strong>사용자경험을 분석,적용</strong>하여 사용자가 사소한
-              불편함도 느끼지 않도록 디자인합니다.
+              <strong>Javascript / Jquery</strong>를 활용하여{" "}
+              <strong>프레임워크를 사용하지않고 다양한 기능 구현</strong>
+              이 가능합니다. <br />
+              <strong>UI/UX를 고려</strong>하여 사용자가 사소한 불편함도 느끼지
+              않도록 디자인합니다.
             </p>
           </li>
           <li>
             <h4>04. </h4>
             <p>
-              react로 다양한 모듈을 활용하여 <strong>SPA페이지</strong>를
-              구현합니다.
+              <strong>React</strong>로 다양한 모듈을 활용하여{" "}
+              <strong>SPA(Single Page Application)</strong>를 구현합니다.
               <br /> 개발 생산성을 높이기 위한 최적화 작업에 관심이 많습니다.
             </p>
           </li>
           <li>
             <h4>05. </h4>
             <p>
-              현재 <strong>typescript를 접목한 react</strong>에 대한 공부를
+              현재 <strong>Typescript를 접목한 React</strong>에 대한 공부를
               진행중입니다.
               <br />각 변수의 타입을 제어하고 오류를 최소화하는 코드 구현에
               힘쓰고있습니다.

@@ -48,6 +48,7 @@ a:link {
    color: #000;
    text-decoration: none;
 }
+
 a:visited {
    color: #000;
    text-decoration: none;
@@ -97,16 +98,31 @@ section>.container{
    width: 1200px;
    margin: 0 auto;
    padding: 66px 20px;
+
+   @media screen and (max-width: 1200px) {
+      width: 768px;
+   }
+
+   @media screen and (max-width: 768px) {
+      max-width: 640px;
+   }
+
+   @media screen and (max-width: 640px) {
+      max-width: 100vw;
+   }
 }
 `;
+
+const { PUBLIC_URL } = process.env;
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <BrowserRouter>
+      <BrowserRouter basename={PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/portfolio" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/whatican" element={<WhatICan />} />
           <Route path="/whatimade" element={<WhatIMade />} />

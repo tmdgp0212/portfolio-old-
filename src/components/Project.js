@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaExpandAlt } from "react-icons/fa";
+import Modal from "./Modal";
+import { useRef } from "react";
 
 const ProjectBox = styled.div`
   display: none;
@@ -7,6 +9,12 @@ const ProjectBox = styled.div`
 
   &.show {
     display: flex;
+
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   > .frame {
@@ -18,6 +26,11 @@ const ProjectBox = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
 
+    @media screen and (max-width: 640px) {
+      width: 480px;
+      height: 250px;
+    }
+
     > img {
       position: absolute;
       top: 21px;
@@ -25,6 +38,13 @@ const ProjectBox = styled.div`
       width: 437px;
       height: 240px;
       border-radius: 3px;
+
+      @media screen and (max-width: 640px) {
+        top: 18px;
+        left: 61px;
+        width: 364px;
+        height: 200px;
+      }
     }
   }
 
@@ -33,6 +53,10 @@ const ProjectBox = styled.div`
     padding: 25px;
     font-family: "Pretendard-Regular";
 
+    @media screen and (max-width: 1200px) {
+      text-align: center;
+    }
+
     > h4 {
       font-size: 24px;
     }
@@ -40,7 +64,11 @@ const ProjectBox = styled.div`
     > .skills {
       display: flex;
       align-items: center;
-      margin: 10px 0 20px;
+      margin: 10px 0 25px;
+
+      @media screen and (max-width: 1200px) {
+        justify-content: center;
+      }
 
       > ul {
         display: flex;
@@ -61,33 +89,53 @@ const ProjectBox = styled.div`
       min-height: 100px;
       word-break: keep-all;
     }
+  }
+`;
 
-    > a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      color: #fff;
-      background-color: #3f2e1c;
-      border-radius: 45px;
-      transition: all 0.3s;
+const MyButton = styled.a`
+  background: none;
+  outline: none;
+  border: none;
 
-      > svg {
-        font-size: 12px;
-      }
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+  background-color: #3f2e1c;
+  border-radius: 45px;
+  transition: all 0.3s;
 
-      &:hover {
-        color: #3f2e1c;
-        background-color: #bcaa9090;
-      }
-    }
+  &:link,
+  &:visited {
+    color: #fff;
+  }
+
+  &:hover {
+    color: #3f2e1c;
+    background-color: #bcaa9090;
+  }
+
+  > svg {
+    font-size: 12px;
   }
 `;
 
 const Project = ({ name, title, url, skill, children }) => {
+  const modalRef = useRef();
+
+  const openModal = () => {
+    modalRef.current.style.display = "flex";
+  };
+
   return (
     <ProjectBox bg={name}>
       <div className="frame">
-        <img src={`${process.env.PUBLIC_URL}/assets/projects/${name}.gif`} />
+        <img
+          src={`${process.env.PUBLIC_URL}/assets/projects/${name}.gif`}
+          alt={name}
+        />
       </div>
       <div className="desc">
         <h4>{title}</h4>
@@ -100,10 +148,14 @@ const Project = ({ name, title, url, skill, children }) => {
           </ul>
         </div>
         <p>{children}</p>
-        <a href={url} target="_blank">
+        <MyButton as={"button"} onClick={openModal}>
+          핵심기능 Preview <FaExpandAlt />
+        </MyButton>
+        <MyButton href={url} rel="noreferrer" target="_blank">
           페이지 바로가기 <FaExternalLinkAlt />
-        </a>
+        </MyButton>
       </div>
+      <Modal name={name} url={url} ref={modalRef} />
     </ProjectBox>
   );
 };
