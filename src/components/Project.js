@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FaExternalLinkAlt, FaExpandAlt } from "react-icons/fa";
 import Modal from "./Modal";
-import { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 
 const ProjectBox = styled.div`
   display: none;
@@ -50,21 +50,23 @@ const ProjectBox = styled.div`
 
   > .desc {
     flex: 1;
-    padding: 25px;
+    padding: 0 25px;
     font-family: "Pretendard-Regular";
 
     @media screen and (max-width: 1200px) {
+      padding: 25px;
       text-align: center;
     }
 
     > h4 {
       font-size: 24px;
+      margin-bottom: 20px;
     }
 
     > .skills {
       display: flex;
       align-items: center;
-      margin: 10px 0 25px;
+      margin: 10px 0;
 
       @media screen and (max-width: 1200px) {
         justify-content: center;
@@ -86,8 +88,14 @@ const ProjectBox = styled.div`
     }
 
     > p {
+      margin: 20px 0 10px;
       min-height: 100px;
       word-break: keep-all;
+
+      > span {
+        display: block;
+        color: darkred;
+      }
     }
   }
 `;
@@ -98,7 +106,7 @@ const MyButton = styled.a`
   border: none;
 
   display: inline-block;
-  margin: 20px 10px;
+  margin: 10px;
   padding: 10px 20px;
   color: #fff;
   font-size: 14px;
@@ -122,12 +130,12 @@ const MyButton = styled.a`
   }
 `;
 
-const Project = ({ name, title, url, skill, children }) => {
+const Project = ({ name, title, url, skill, factoring, children }) => {
   const modalRef = useRef();
 
-  const openModal = () => {
+  const openModal = useCallback(() => {
     modalRef.current.style.display = "flex";
-  };
+  }, []);
 
   return (
     <ProjectBox bg={name}>
@@ -147,9 +155,19 @@ const Project = ({ name, title, url, skill, children }) => {
             ))}
           </ul>
         </div>
-        <p>{children}</p>
-        <MyButton as={"button"} onClick={openModal}>
-          핵심기능 Preview <FaExpandAlt />
+        <div className="skills">개인작업 100%</div>
+        <p>
+          {factoring ? <span>~현재 작업중인 페이지입니다.~</span> : null}
+          {children}
+        </p>
+        <MyButton as={"button"} onClick={factoring ? null : openModal}>
+          {factoring ? (
+            "준비되지않음"
+          ) : (
+            <>
+              핵심기능 Preview <FaExpandAlt />
+            </>
+          )}
         </MyButton>
         <MyButton href={url} rel="noreferrer" target="_blank">
           페이지 바로가기 <FaExternalLinkAlt />
@@ -160,4 +178,4 @@ const Project = ({ name, title, url, skill, children }) => {
   );
 };
 
-export default Project;
+export default React.memo(Project);

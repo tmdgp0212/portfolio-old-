@@ -35,7 +35,7 @@ const ProjectSlider = styled.div`
       display: block;
       position: absolute;
       top: -20px;
-      right: 280px;
+      right: 220px;
       width: 120px;
       height: 40px;
       background-image: url(./assets/more.png);
@@ -45,11 +45,11 @@ const ProjectSlider = styled.div`
       content: "";
 
       @media screen and (max-width: 1200px) {
-        right: 60px;
+        right: 0px;
       }
 
       @media screen and (max-width: 768px) {
-        right: 30px;
+        right: -20px;
       }
 
       @media screen and (max-width: 640px) {
@@ -98,7 +98,7 @@ const Projects = styled.div`
   }
 `;
 
-const clonPJList = ["Kakao", "산돌구름", "FREEWILL"];
+const clonPJList = ["Kakao", "산돌구름", "FREEWILL", "NETFLIX"];
 
 const personalPJList = [
   "가위,바위,보",
@@ -113,7 +113,7 @@ const WhatIMade = () => {
   const clonProjectsRef = useRef();
   const personalProjectsRef = useRef();
 
-  const [clonActive, setClonActive] = useState([true, false, false]);
+  const [clonActive, setClonActive] = useState([true, false, false, false]);
   const [personalActive, setPersonalActive] = useState([
     true,
     false,
@@ -125,27 +125,22 @@ const WhatIMade = () => {
     navigate("/contact");
   };
 
-  const Active = (targetIdx) => {
-    setClonActive((prev) =>
-      prev.map((it, idx) => (idx === targetIdx ? true : false))
-    );
+  const Active = (targetIdx, e) => {
+    let projects;
 
-    const projects = clonProjectsRef.current.children;
-    for (let i = 0; i < projects.length; i++) {
-      if (i === targetIdx) {
-        projects[targetIdx].classList.add("show");
-      } else {
-        projects[i].classList.remove("show");
-      }
+    if (e.target.getAttribute("name") === "clon") {
+      setClonActive((prev) =>
+        prev.map((it, idx) => (idx === targetIdx ? true : false))
+      );
+      projects = clonProjectsRef.current.children;
+    } else {
+      setPersonalActive((prev) =>
+        prev.map((it, idx) => (idx === targetIdx ? true : false))
+      );
+
+      projects = personalProjectsRef.current.children;
     }
-  };
 
-  const Active2 = (targetIdx) => {
-    setPersonalActive((prev) =>
-      prev.map((it, idx) => (idx === targetIdx ? true : false))
-    );
-
-    const projects = personalProjectsRef.current.children;
     for (let i = 0; i < projects.length; i++) {
       if (i === targetIdx) {
         projects[targetIdx].classList.add("show");
@@ -171,9 +166,10 @@ const WhatIMade = () => {
           <ul className="focus">
             {clonPJList.map((it, idx) => (
               <li
+                name={"clon"}
                 key={idx}
                 className={clonActive[idx] ? "on" : null}
-                onClick={() => Active(idx)}
+                onClick={(e) => Active(idx, e)}
               >
                 {it}
               </li>
@@ -195,7 +191,7 @@ const WhatIMade = () => {
             </Project>
             <Project
               name="sandoll"
-              title="산돌구름 홈페이지 제작"
+              title="산돌구름 홈페이지 클론"
               url="https://tmdgp0212.github.io/Sandoll-cloud/"
               skill={["html", "scss", "Javascrit"]}
             >
@@ -216,6 +212,20 @@ const WhatIMade = () => {
               또한 wow.js 라이브러리를 활용하여 스크롤 이벤트를
               적용해보았습니다.
             </Project>
+            <Project
+              name="netflix"
+              title="NETFLIX 홈페이지 클론"
+              url="https://tmdgp0212.github.io/netflix/"
+              skill={["raect"]}
+              factoring
+            >
+              ReactQuery로 API 데이터를 받아와 영화의 정보를 보여주는
+              netflix페이지입니다. <br />
+              영화와 Tv프로그램은 각각의 페이지로 나누어 제작되었으며, 클릭하면
+              상세정보를 볼 수 있습니다.
+              <br />
+              framer-motion을 활용해 다양한 애니메이션을 구현하였습니다.
+            </Project>
           </Projects>
         </ProjectSlider>
 
@@ -224,9 +234,10 @@ const WhatIMade = () => {
           <ul>
             {personalPJList.map((it, idx) => (
               <li
+                name={"personal"}
                 key={idx}
                 className={personalActive[idx] ? "on" : null}
-                onClick={() => Active2(idx)}
+                onClick={(e) => Active(idx, e)}
               >
                 {it}
               </li>

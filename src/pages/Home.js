@@ -72,6 +72,7 @@ const HomeWrapper = styled.section`
       > h2 {
         font-size: 54px;
         line-height: 1.5;
+        word-break: keep-all;
 
         z-index: 100;
 
@@ -178,8 +179,8 @@ const Home = () => {
       <div className="container">
         <div className="greeting">
           <h2>
-            <span className="top">끊임없이 성장하는 개발자.</span>
-            <span className="btm">조승혜입니다.</span>
+            <span className="top">Nothing Is Impossible.</span>
+            <span className="btm">도전하는 개발자 조승혜입니다</span>
           </h2>
         </div>
 
