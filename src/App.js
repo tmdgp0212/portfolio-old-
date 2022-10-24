@@ -121,8 +121,8 @@ function App() {
       <GlobalStyle />
       <BrowserRouter basename={PUBLIC_URL}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/portfolio" element={<Home />} />
+          <Route path="/" element={<Profile />} />
+          <Route path="/portfolio" element={<Profile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/whatican" element={<WhatICan />} />
           <Route path="/whatimade" element={<WhatIMade />} />

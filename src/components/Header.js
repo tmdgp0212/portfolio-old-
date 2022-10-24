@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
 import { GoMarkGithub, GoMail } from "react-icons/go";
@@ -197,6 +197,9 @@ const Header = () => {
       }
     }
   };
+
+  const homeMatch = useMatch("/");
+  console.log(homeMatch);
   return (
     <MyHeader>
       <div className="container">
@@ -210,9 +213,15 @@ const Header = () => {
               <li key={c.name}>
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? "active" : undefined
+                    isActive
+                      ? c.name === "profile"
+                        ? homeMatch
+                          ? "active"
+                          : undefined
+                        : "active"
+                      : undefined
                   }
-                  to={c.name === "home" ? "/" : `/${c.name}`}
+                  to={c.name === "profile" ? "/" : `/${c.name}`}
                 >
                   {c.text}
                 </NavLink>
