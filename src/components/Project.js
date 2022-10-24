@@ -160,14 +160,8 @@ const Project = ({ name, title, url, skill, factoring, children }) => {
           {factoring ? <span>~현재 작업중인 페이지입니다.~</span> : null}
           {children}
         </p>
-        <MyButton as={"button"} onClick={factoring ? null : openModal}>
-          {factoring ? (
-            "준비되지않음"
-          ) : (
-            <>
-              핵심기능 Preview <FaExpandAlt />
-            </>
-          )}
+        <MyButton as={"button"} onClick={openModal}>
+          핵심기능 Preview <FaExpandAlt />
         </MyButton>
         <MyButton href={url} rel="noreferrer" target="_blank">
           페이지 바로가기 <FaExternalLinkAlt />
