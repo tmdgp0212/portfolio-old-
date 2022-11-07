@@ -7,6 +7,11 @@ import Project from "../components/Project";
 
 const Wrapper = styled.section`
   > .container {
+    > .comment {
+      margin-bottom: 100px;
+      text-align: center;
+    }
+
     > button {
       margin: 0 auto;
     }
@@ -14,6 +19,8 @@ const Wrapper = styled.section`
 `;
 
 const ProjectSlider = styled.div`
+  margin-bottom: 120px;
+
   > h3 {
     margin: 80px 0 50px;
     font-size: 36px;
@@ -89,7 +96,6 @@ const ProjectSlider = styled.div`
 const Projects = styled.div`
   position: relative;
   height: 380px;
-  margin-bottom: 150px;
   padding: 40px 25px;
 
   @media screen and (max-width: 1200px) {
@@ -186,8 +192,10 @@ const WhatIMade = () => {
               클론 프로젝트입니다
               <br />
               4type의 반응형 레이아웃을 적용하였으며, 메인 카드가 스크롤을 따라
-              움직이다 일정 위치에 닿으면 멈춰섭니다. 헤더또한 아래로 스크롤하면
-              slide up되며 사라졌다 위로 스크롤 하면 나타나도록 하였습니다.
+              움직이다 일정 위치에 닿으면 멈춰섭니다.
+              <br />
+              특정한 높이에서만 이벤트가 발동하고 멈추도록 구현하는 로직을 위해
+              많은 고민을 하였습니다.
             </Project>
             <Project
               name="sandoll"
@@ -208,7 +216,7 @@ const WhatIMade = () => {
               skill={["html", "scss", "Jquery"]}
             >
               반응형 웹을 구현하고, 햄버거버튼(nav)을 눌렀을때 팝업 애니메이션을
-              라이브러리 없이 구현했습니다. <br />
+              라이브러리 없이 구현해보았습니다. <br />
               또한 wow.js 라이브러리를 활용하여 스크롤 이벤트를
               적용해보았습니다.
             </Project>
@@ -217,12 +225,11 @@ const WhatIMade = () => {
               title="NETFLIX 홈페이지 클론"
               url="https://tmdgp0212.github.io/netflix/"
               skill={["raect"]}
-              factoring
             >
               ReactQuery로 API 데이터를 받아와 영화의 정보를 보여주는
               netflix페이지입니다. <br />
-              영화와 Tv프로그램은 각각의 페이지로 나누어 제작되었으며, 클릭하면
-              상세정보를 볼 수 있습니다.
+              API를 받아와 다양하게 활용하는 법을 연습 할 수 있었으며
+              ReactQuery의 장점을 알아 볼 수 있는 프로젝트였습니다.
               <br />
               framer-motion을 활용해 다양한 애니메이션을 구현하였습니다.
             </Project>
@@ -274,8 +281,9 @@ const WhatIMade = () => {
               부산의 여행지를 소개하는 창작 페이지입니다. <br />
               "부산온나"는 부산 온나!(부산에 오세요의 사투리) 와 부산에 온
               나(me)의 이중적 의미를 가집니다. <br />
-              다양한 슬라이드 이벤트와 네비게이션 바 구현에 초점을 맞추어
-              진행되었습니다.
+              페이지의 컨셉과 내용, 디자인을 직접 설계하고 적용해보 많은 애정을
+              담은 프로젝트이며, 다양한 슬라이드 이벤트와 네비게이션 바 구현에
+              초점을 맞추어 진행되었습니다.
             </Project>
             <Project
               name="calendar"
@@ -300,6 +308,10 @@ const WhatIMade = () => {
             </Project>
           </Projects>
         </ProjectSlider>
+        <div className="comment">
+          ※위 작품들은 학원 수업으로 진행한 프로젝트가 아닌 개인공부를 위해
+          진행한 100% 개인 프로젝트입니다.
+        </div>
         <NextBtn text={"Contact"} onClick={onClick} />
       </div>
     </Wrapper>
