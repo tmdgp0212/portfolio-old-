@@ -1,7 +1,8 @@
 import { Link, NavLink, useMatch } from "react-router-dom";
 import styled from "styled-components";
 
-import { GoMarkGithub, GoMail } from "react-icons/go";
+import { GoMarkGithub } from "react-icons/go";
+import { FaVimeoV } from "react-icons/fa";
 import { useRef } from "react";
 
 const MyHeader = styled.header`
@@ -238,8 +239,12 @@ const Header = () => {
           >
             <GoMarkGithub /> github
           </a>
-          <a href={"mailto:tmdgp0212@naver.com"}>
-            <GoMail /> mail
+          <a 
+            href={"https://velog.io/@tmdgp0212"}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <FaVimeoV /> velog
           </a>
         </div>
       </div>

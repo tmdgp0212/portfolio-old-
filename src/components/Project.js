@@ -88,6 +88,8 @@ const ProjectBox = styled.div`
     }
 
     > p {
+      display: flex;
+      align-items: center;
       margin: 20px 0 10px;
       min-height: 100px;
       word-break: keep-all;
@@ -130,7 +132,7 @@ const MyButton = styled.a`
   }
 `;
 
-const Project = ({ name, title, url, skill, factoring, children }) => {
+const Project = ({ name, title, url, skill, time, factoring, children }) => {
   const modalRef = useRef();
 
   const openModal = useCallback(() => {
@@ -155,14 +157,21 @@ const Project = ({ name, title, url, skill, factoring, children }) => {
             ))}
           </ul>
         </div>
-        <div className="skills">개인작업 100%</div>
+        <div className="time">
+          작업기간 : {time}
+        </div>
         <p>
-          {factoring ? <span>~현재 작업중인 페이지입니다.~</span> : null}
           {children}
         </p>
+        {factoring ? 
+        <MyButton as={"button"}>
+          준비중 <FaExpandAlt />
+        </MyButton>
+        :
         <MyButton as={"button"} onClick={openModal}>
           핵심기능 Preview <FaExpandAlt />
         </MyButton>
+        }
         <MyButton href={url} rel="noreferrer" target="_blank">
           페이지 바로가기 <FaExternalLinkAlt />
         </MyButton>

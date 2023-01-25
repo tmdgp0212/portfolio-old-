@@ -8,6 +8,7 @@ import {
   FiInstagram,
   FiMessageCircle,
 } from "react-icons/fi";
+import { FaVimeoV } from "react-icons/fa";
 import { useEffect } from "react";
 
 const Wrapper = styled.section`
@@ -143,6 +144,14 @@ const Contact = () => {
                 tmdgp0212 github
               </a>
               <a
+                href="https://velog.io/@tmdgp0212"
+                rel="noreferrer"
+                target={"_blank"}
+              >
+                <FaVimeoV />
+                velog
+              </a>
+              <a
                 href="https://www.instagram.com/gnues.eyh/"
                 rel="noreferrer"
                 target={"_blank"}
@@ -153,7 +162,7 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <address>&copy;2022. Jo seung-hye. All rights reserved.</address>
+        <address>&copy;{new Date().getFullYear()}. Jo seung-hye. All rights reserved.</address>
       </div>
     </Wrapper>
   );

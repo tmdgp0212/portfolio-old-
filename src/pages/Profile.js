@@ -10,7 +10,6 @@ import {
   FaHandPeace,
   FaPuzzlePiece,
   FaRegSmileWink,
-  FaRegGrinBeamSweat,
   FaRegCommentDots,
 } from "react-icons/fa";
 
@@ -330,7 +329,7 @@ const Experience = styled.div`
 
       @media screen and (max-width: 768px) {
         width: 4px;
-        height: 500px;
+        height: 600px;
         order: 100;
       }
     }
@@ -475,10 +474,15 @@ const Profile = () => {
                 <span>맑은얼굴의원</span>
                 <span className="rank">관리사</span>
               </div>
-              <div className="exprnce now">
+              <div className="exprnce">
                 <span className="year">2022</span>
                 <span>이젠컴퓨터아카데미</span>
                 <span className="rank">웹퍼블리셔/프론트엔드 과정 수강</span>
+              </div>
+              <div className="exprnce now">
+                <span className="year">2023</span>
+                <span>패스트캠퍼스&lt;Megabyte School&gt;</span>
+                <span className="rank">프론트엔드 개발 과정 수강</span>
               </div>
             </div>
             <span className="bar"></span>
@@ -490,7 +494,6 @@ const Profile = () => {
               Intro <FaRegCommentDots />
             </h4>
             <p>
-              <b>제 경력이 조금 특이하죠?</b> <FaRegGrinBeamSweat /> <br />
               제가 걸어온 인생은 사실 it나 컴퓨터와는 거리가 먼 곳이였습니다.
               <br /> 정말 애정하던 제 직업이였지만, 직업특성상 더 먼곳을 내다볼
               수 없어 지금의 공부를 시작했습니다.
@@ -506,14 +509,18 @@ const Profile = () => {
               Strength <FaHandPeace />
             </h4>
             <p>
-              저는 항상
-              <strong> 새로운 것을 배우고 적응하는 것에 자신</strong>이 있다는
-              점이 가장 큰 장점입니다.
+              <strong>"처음 배워본거 맞아요?"</strong>
               <br />
-              그렇기에 뭐든지 "하면 된다!" 라는 믿음으로 새로운 도전에 두려움
-              없이 뛰어들 수 있습니다. <br />
-              귀사에 일원이 된다면 도전적이고 능동적인 태도로 항상 발전하는
-              일원으로써 큰 도움이 될 것 입니다.
+              제가 무언가 새로운 분야에 도전하거나, 체험의 기회가 있을 때 마다 자주 들었던 이야기입니다.
+              <br />
+              저는 항상 무언가를 배우고 적응하는 것이 빠른 편이였고, 스스로도 자신감을 느끼고 있습니다.
+              <br />
+              그렇기에 뭐든지 <b>"하면 된다!"</b> 라는 믿음으로 새로운 도전에 두려움
+              없이 뛰어들 수 있습니다.
+              <br />
+              프론트엔드 개발자로의 직무전환도 위와같은 자신감을 가지고 시작했으며,
+              전혀 경험이 없는 직무를 선택하게 된 만큼, 더욱 뒤쳐지지 않아야 한다고 생각하며 더 많이 공부하고 노력하고 있습니다.
+              빠른 습득력과 꾸준한 노력이 만나 더 큰 성장을 이룰 수 있을 것 입니다.
             </p>
           </div>
           <div className="cmnt">
@@ -539,8 +546,8 @@ const Profile = () => {
               Will be <FaRegSmileWink />
             </h4>
             <p>
-              직업은 단순한 돈벌이 수단이 아닌 사회적인 나, 제 2의 인격체가 되는
-              것이라 생각합니다. <br /> 그렇기에 저는 항상{" "}
+              인생의 대부분을 직장에서 보내게 되는만큼 직업을 단순한 돈벌이 수단으로 삼지 않아야합니다.
+              <br /> 그렇기에 저는 항상{" "}
               <strong>스스로도 인정할수 있는 실력있는 직업인</strong>이 되고자
               노력합니다. <br />
               그저 일터에서 시간만 죽이는 회사원이 아닌, 꾸준한 성과로 인정받는

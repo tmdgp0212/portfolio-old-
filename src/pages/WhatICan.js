@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import NextBtn from "../components/NextBtn";
-import Skill from "../components/Skill";
+// import Skill from "../components/Skill";
 
 const Wrapper = styled.section`
   > .container {
@@ -19,13 +19,21 @@ const Wrapper = styled.section`
   }
 `;
 const Skills = styled.div`
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 35px;
 
   @media screen and (max-width: 1200px) {
     padding: 0 50px;
     grid-template-columns: 1fr;
+  } */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+
+  img {
+    height: 75px;
   }
 `;
 
@@ -87,7 +95,7 @@ const WhatICan = () => {
       <Header />
       <div className="container">
         <h3>Skills</h3>
-        <Skills>
+        {/* <Skills>
           <Skill skill={"html5"} per={92} />
           <Skill skill={"css3"} per={94} />
           <Skill skill={"javascript"} per={83} />
@@ -95,6 +103,36 @@ const WhatICan = () => {
           <Skill skill={"jquery"} per={88} />
           <Skill skill={"react"} per={72} />
           <Skill skill={"typescript"} per={35} />
+        </Skills> */}
+        <Skills>
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/html5.png`}
+            alt={'html5'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/css3.png`}
+            alt={'css3'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/javascript.png`}
+            alt={'javascript'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/sass.png`}
+            alt={'sass'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/jquery.png`}
+            alt={'jquery'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/react.png`}
+            alt={'react'}
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/skill/typescript.png`}
+            alt={'typescript'}
+          />
         </Skills>
         <Comments>
           <div className="about-me">
@@ -155,8 +193,7 @@ const WhatICan = () => {
               <li>
                 <span>08. </span>
                 <p>
-                  <strong>styled-components</strong>를 사용하여 페이지를
-                  디자인합니다.
+                  <strong>API통신</strong>으로 서버에 데이터를 저장하고 수정,삭제해 본 경험이 있습니다.
                 </p>
               </li>
               <li>
@@ -169,12 +206,18 @@ const WhatICan = () => {
               <li>
                 <span>10. </span>
                 <p>
+                  <strong>Git</strong>을 통한 브랜치 관리와 버전 생산 경험이 있습니다.
+                </p>
+              </li>
+              <li>
+                <span>11. </span>
+                <p>
                   <strong>GitHub</strong>로 사이트를 배포하여 소스를 관리하고
                   공유한 경험이 있습니다.
                 </p>
               </li>
               <li>
-                <span>11. </span>
+                <span>12. </span>
                 <p>
                   <strong>UI/UX에 대한 이해</strong>를 바탕으로 사용자입장에서
                   고민하여 개발 합니다.
