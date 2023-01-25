@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Contact from "./pages/Contact";
-import Home from "./pages/Home";
+// import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import WhatICan from "./pages/WhatICan";
 import WhatIMade from "./pages/WhatIMade";
